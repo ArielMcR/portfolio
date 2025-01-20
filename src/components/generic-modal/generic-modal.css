@@ -1,0 +1,119 @@
+/* CSS do Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 65%;
+    max-width: 75vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    z-index: 1001;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 3vh;
+    height: 3vh;
+}
+
+
+
+.modal-overlay img {
+    max-width: 100%;
+    width: 5vh;
+    height: 5vh;
+}
+
+
+
+.modal-content h2,
+.modal-content p {
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 1vh;
+    background-color: #ffff;
+    border-radius: 5vh;
+    box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.30);
+}
+
+.default img {
+    width: 3vh;
+    height: 3vh;
+    margin-left: 1vh;
+}
+
+.arrow {
+    width: 1vh !important;
+    height: 1vh !important;
+
+}
+
+.arrow:hover {
+    fill: gray;
+}
+
+.union-ios {
+    margin-left: 1vh;
+}
+
+.union-web {
+    margin-left: 1vh;
+}
+
+.button-union {
+    border: none;
+    background-color: none;
+}
+
+.union-web span {
+    margin-left: 1vh;
+}
+
+@media(max-width: 768px) {
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 45vh;
+        height: 250vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .modal-union {
+        flex-direction: column;
+    }
+}
