@@ -303,14 +303,13 @@ O projeto envolve o desenvolvimento de um sistema de gestão médica voltado par
           />
           <AutoCard
             description={`
-O projeto envolve o desenvolvimento de um sistema de gestão médica voltado para consultórios de psicologia, com o objetivo de facilitar o agendamento de consultas, o gerenciamento de prontuários eletrônicos e a comunicação entre profissionais e pacientes. O software proposto será uma plataforma que oferece uma interface intuitiva para organizar os calendários de consultas, armazenar dados clínicos de forma centralizada e acompanhar o histórico de tratamento dos pacientes. Ao automatizar e otimizar esses processos, o sistema busca melhorar a eficiência dos consultórios, proporcionando maior praticidade no dia a dia dos psicólogos.
+O Portal de Loja de Carros é uma solução digital prática e intuitiva desenvolvida para facilitar a experiência de compra de veículos. A plataforma permite que os usuários explorem um catálogo completo de carros disponíveis, com informações detalhadas sobre cada modelo, como marca, ano, preço e características específicas. Por meio de filtros personalizáveis, os visitantes podem refinar a busca de acordo com suas preferências, como faixa de preço, tipo de combustível ou quilometragem, tornando a seleção mais rápida e eficiente. Ao encontrar o carro ideal, o usuário pode entrar em contato diretamente com a loja enviando uma mensagem através do portal, agilizando a comunicação e o processo de negociação. Simples, funcional e focado na satisfação do cliente, o sistema é a ponte perfeita entre os compradores e a loja de veículos.
               `}
             img={IMAGES.hendeny_logo}
             title={`            
             Hendeny luxury car sales
             `}
             useReact={true}
-            useReactNative={true}
             useNode={true}
             useMysql={true}
             useWeb={true}
