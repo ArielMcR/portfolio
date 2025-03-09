@@ -108,3 +108,10 @@ h2 {
 .in-development {
     background-color: var(--indevelopment);
 }
+
+@media (max-width: 468px) {
+    .card {
+        width: 80vw;
+        height: auto;
+    }
+}

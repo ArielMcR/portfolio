@@ -18,7 +18,8 @@ const GenericModal = ({
     img_modal,
     onClose,
     useWeb,
-    useAndroid
+    useAndroid,
+    link_web = '/'
 }) => {
     if (!onOpen) return null;
 
@@ -106,20 +107,7 @@ const GenericModal = ({
                         </>
                     )}
                     {useWeb && (
-                        <a href="" onClick={(e) => {
-                            e.preventDefault();
-                            toast.warn('Site ainda não disponível', {
-                                position: "top-right",
-                                autoClose: 5000,
-                                hideProgressBar: false,
-                                closeOnClick: false,
-                                pauseOnHover: true,
-                                draggable: true,
-                                progress: undefined,
-                                theme: "dark",
-                                transition: Bounce,
-                            });
-                        }}>
+                        <a href={link_web}>
                             <div className="union default union-web">
                                 <img src={site} alt="" />
                                 <span> Ver o site</span>

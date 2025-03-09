@@ -95,13 +95,14 @@
     margin-left: 1vh;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
-        width: 45vh;
-        height: 250vh;
+        width: 100%;
+        height: 100vh;
+        /* Corrigido de 250vh para 100vh */
         background-color: rgba(0, 0, 0, 0.7);
         display: flex;
         justify-content: center;
@@ -111,6 +112,10 @@
 
     .modal-content {
         width: 95%;
+        max-height: 87vh;
+        position: relative;
+        bottom: 0;
+        overflow-y: auto;
     }
 
     .modal-union {

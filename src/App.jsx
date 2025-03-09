@@ -161,6 +161,11 @@ function App() {
     IMAGES.siap_image3,
     IMAGES.siap_image4
   ]
+  const hendeny_imgs = [
+    IMAGES.hendeny_image1,
+    IMAGES.hendeny_image2,
+    IMAGES.hendeny_image3,
+  ]
   return (
     <>
       <div className='first-section' ref={first_section_ref}>
@@ -221,24 +226,28 @@ function App() {
               <p className='normal-text'>
                 Atualmente, estou em busca de oportunidades como Desenvolvedor Web Júnior ou Estagiário/Trainee para aplicar e expandir minhas habilidades. <span className='alternative-color'>Tenho grande interesse nas áreas de desenvolvimento Full-Stack web e Mobile.</span>
               </p>
-              <div className="hard-skills">
-                <div className="union second-union hard-skill-union">
-                  <hr />
-                  <h4>Hard-Skills</h4>
-                </div>
-                <div className="columns">
-                  <h3>React</h3>
-                  <h3>React-native</h3>
-                  <h3>HTML5</h3>
-                  <h3>CSS3</h3>
-                  <h3>JavaScript</h3>
-                  <h3>Python</h3>
-                </div>
-                <div className="columns">
-                  <h3>MySQL 5</h3>
-                  <h3>MySQL 8</h3>
-                  <h3>JAVA</h3>
-                  <h3>SCRUM</h3>
+              <div className='alinha-centro'>
+                <div className="hard-skills">
+                  <div className="union second-union hard-skill-union">
+                    <hr />
+                    <h4>Hard-Skills</h4>
+                  </div>
+                  <div className="columns">
+                    <h3>React</h3>
+                    <h3>React-native</h3>
+                    <h3>HTML5</h3>
+                    <h3>CSS3</h3>
+                    <h3>JavaScript</h3>
+                    <h3>Python</h3>
+                  </div>
+                  <div className="columns">
+                    <h3>MySQL 5</h3>
+                    <h3>MySQL 8</h3>
+                    <h3>JAVA</h3>
+                    <h3>SCRUM</h3>
+                    <h3>Next JS</h3>
+                    <h3>Redis</h3>
+                  </div>
                 </div>
               </div>
               <div className="section-about">
@@ -291,6 +300,22 @@ O projeto envolve o desenvolvimento de um sistema de gestão médica voltado par
             useWeb={true}
             inDevelopment={true}
             img_modal={siap_imgs}
+          />
+          <AutoCard
+            description={`
+O projeto envolve o desenvolvimento de um sistema de gestão médica voltado para consultórios de psicologia, com o objetivo de facilitar o agendamento de consultas, o gerenciamento de prontuários eletrônicos e a comunicação entre profissionais e pacientes. O software proposto será uma plataforma que oferece uma interface intuitiva para organizar os calendários de consultas, armazenar dados clínicos de forma centralizada e acompanhar o histórico de tratamento dos pacientes. Ao automatizar e otimizar esses processos, o sistema busca melhorar a eficiência dos consultórios, proporcionando maior praticidade no dia a dia dos psicólogos.
+              `}
+            img={IMAGES.hendeny_logo}
+            title={`            
+            Hendeny luxury car sales
+            `}
+            useReact={true}
+            useReactNative={true}
+            useNode={true}
+            useMysql={true}
+            useWeb={true}
+            img_modal={hendeny_imgs}
+            link_web='https://hendeny.vercel.app'
           />
         </div>
       </div>

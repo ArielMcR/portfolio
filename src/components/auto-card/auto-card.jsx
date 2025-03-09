@@ -19,6 +19,7 @@ export default function AutoCard({
     useMysql,
     inDevelopment,
     img_modal = [],
+    link_web = '/',
 }) {
     const [openModal, setOpenModal] = useState(false);
     const truncateDescription = (text, maxLength) => {
@@ -40,6 +41,7 @@ export default function AutoCard({
                     img_modal={img_modal}
                     useWeb={useWeb}
                     useAndroid={useAndroid}
+                    link_web={link_web}
                 />
             )}
             <div className="card" onClick={() => setOpenModal(true)}>

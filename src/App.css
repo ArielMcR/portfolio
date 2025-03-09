@@ -48,6 +48,7 @@ body {
   transition: opacity 0.3s ease;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
   /* Garante que ocupe pelo menos a altura da janela de visualização */
   background-color: var(--first-section);
 }
@@ -266,6 +267,7 @@ body {
 .second-section {
   width: 100%;
   height: 51vw;
+  overflow: hidden;
   flex-shrink: 0;
   background-color: var(--second-section);
 }
@@ -400,6 +402,7 @@ body {
 .third-section {
   width: 100%;
   min-height: 65vh;
+  overflow: hidden;
   flex-shrink: 0;
   background-color: var(--third-section);
   padding: 16px;
@@ -436,6 +439,7 @@ body {
 }
 
 .four-section {
+  overflow: hidden;
   width: 100%;
   min-height: 65vh;
   flex-shrink: 0;
@@ -773,5 +777,99 @@ a:hover {
     display: block;
     padding-left: 5vh;
     width: 35vh;
+  }
+}
+
+@media (max-width: 468px) {
+  .menu-left-side {
+    margin-top: 1.5vh;
+    width: 100%;
+  }
+
+  .first-section {
+    height: 63vh;
+  }
+
+  .second-section {
+    height: 205vh;
+  }
+
+  .second-side {
+    margin-top: 1vh;
+  }
+
+  .second-union h3 {
+    font-size: 28px;
+  }
+
+  .about-me {
+    height: 140vh;
+  }
+
+  .second-side-right {
+    margin-left: 2vh;
+  }
+
+  .normal-text {
+    font-size: 15px;
+    padding-left: 2vh;
+    padding-right: 2vh;
+  }
+
+  .hard-skill-union h4 {
+    font-size: 25px;
+  }
+
+  .alinha-centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hard-skills {
+    width: 38vh;
+    height: 45vh;
+  }
+
+  .columns h3 {
+    font-size: 20px;
+    margin-top: 1vh;
+  }
+
+  .third-section {
+    height: auto;
+  }
+
+  .four-section {
+    height: auto;
+  }
+
+  .four-section .container .left-side {
+    margin-top: 0vh;
+  }
+
+  .midia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .midia .menu-left-side {
+    width: 100%;
+    margin: 1vh;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4vh;
+    margin: 2vh 0vh 3vh 0vh;
+  }
+
+  .p-1_5 {
+    padding: 0;
+  }
+
+  .footer {
+    height: 6vh;
+    font-size: 10px;
   }
 }

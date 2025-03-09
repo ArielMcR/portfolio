@@ -12,6 +12,10 @@ const IMAGES = {
     siap_image2: new URL('./siap/2.png', import.meta.url).href,
     siap_image3: new URL('./siap/3.png', import.meta.url).href,
     siap_image4: new URL('./siap/4.png', import.meta.url).href,
+    hendeny_logo: new URL('./log.png', import.meta.url).href,
+    hendeny_image1: new URL('./hendeny/0.png', import.meta.url).href,
+    hendeny_image2: new URL('./hendeny/1.png', import.meta.url).href,
+    hendeny_image3: new URL('./hendeny/2.png', import.meta.url).href,
 }
 
 export default IMAGES
