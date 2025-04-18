@@ -6,8 +6,6 @@
     justify-items: center;
 }
 
-
-
 .tech-card {
     background-color: #111;
     color: #fff;
@@ -40,4 +38,20 @@
 .tech-card p {
     font-size: 0.9rem;
     color: #ccc;
+}
+
+@media (max-width: 460px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-card {
+        width: 80%;
+        margin: 1rem auto;
+        height: auto;
+    }
+
+    .tech-card h3 {
+        font-size: 1rem;
+    }
 }

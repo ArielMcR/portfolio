@@ -3,6 +3,7 @@ import whiteCheck from "../../assets/white-check-solid.svg";
 import check from "../../assets/check-solid.svg";
 import { useState } from "react";
 import GenericModal from "../generic-modal/generic-modal";
+import { CursorClick } from "@phosphor-icons/react";
 
 export default function AutoCard({
     title,
@@ -50,8 +51,14 @@ export default function AutoCard({
                     <h2>{title}</h2>
                 </div>
                 <div className="content">
-                    <p>{truncateDescription(description, 390)}</p>
+                    <p>{truncateDescription(description, 300)}</p>
+                    <section className="see-more">
+                        <p>
+                            <span>Pressione para ver mais...</span><CursorClick size={22} />
+                        </p>
+                    </section>
                 </div>
+
                 <div className="tags">
                     {useReact && (
                         <div className="tag react">

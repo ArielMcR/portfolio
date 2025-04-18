@@ -1,6 +1,6 @@
 :root {
-    --react: #1ac5ee;
-    --node: #83cb2b;
+    --react: #074757;
+    --node: #3c6b03;
     --android: #3b5f0f;
     --ios: #ffffff;
     --web: #e6e6e6;
@@ -55,6 +55,21 @@ h2 {
     font-size: 14px;
     font-weight: 300;
     line-height: 1.5;
+    text-align: justify;
+}
+
+.see-more p {
+    text-align: center;
+    font-weight: 700;
+    color: var(--yellow-smooth);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.see-more p span {
+    margin-right: .3rem;
 }
 
 .tags {

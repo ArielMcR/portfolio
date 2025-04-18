@@ -881,7 +881,7 @@ a:hover {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 460px) {
   .menu-left-side {
     margin-top: 1.5vh;
     width: 100%;
@@ -920,11 +920,17 @@ a:hover {
   }
 
   .about-me {
-    height: 140vh;
+    margin: 0;
+    height: auto;
+    width: 100%;
+  }
+
+  .download-cv {
+    margin-bottom: 2vh;
   }
 
   .second-side-right {
-    margin-left: 2vh;
+    width: 100%;
   }
 
   .normal-text {
@@ -935,6 +941,10 @@ a:hover {
 
   .hard-skill-union h4 {
     font-size: 25px;
+  }
+
+  .hard-skills h1 {
+    font-size: 28px;
   }
 
   .alinha-centro {
@@ -986,4 +996,11 @@ a:hover {
     height: 6vh;
     font-size: 10px;
   }
+}
+
+@media (max-width:360px) {
+  .left-side h1 {
+    margin: 0;
+  }
+
 }

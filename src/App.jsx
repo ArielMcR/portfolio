@@ -173,7 +173,7 @@ function App() {
       <div className='first-section' ref={first_section_ref}>
         <div className="header">
           <div className="hover-mouse">
-            <h1 className='name'>Ariel Machado</h1>
+            <h1 className='name' onClick={() => scrollToSection(home)}>Ariel Machado</h1>
           </div>
           <ul className="menu-left-side">
             <li onClick={() => scrollToSection(home)} className='item-list'>Home</li>
