@@ -80,15 +80,15 @@ function App() {
       duration: 3,
       ease: 'power2.out',
     })
-    gsap.to(first_section_ref.current, {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: first_section_ref.current,
-        start: 'center center',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
+    // gsap.to(first_section_ref.current, {
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: first_section_ref.current,
+    //     start: 'center center',
+    //     end: 'bottom top',
+    //     scrub: true,
+    //   },
+    // });
     gsap.to(about.current, {
       scrollTrigger: {
         trigger: about.current,
