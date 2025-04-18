@@ -15,10 +15,12 @@ import React from 'react';
 import emailJs from '@emailjs/browser'
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import { gsap } from "gsap";
+import { TextPlugin } from 'gsap/TextPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import IMAGES from './imgs/images';
+import TechGrid from './components/techCard/techCard';
 function App() {
-  const home = useRef()
+  const home = useRef(null)
   const about = useRef()
   const contact = useRef()
   const projects = useRef()
@@ -171,7 +173,7 @@ function App() {
       <div className='first-section' ref={first_section_ref}>
         <div className="header">
           <div className="hover-mouse">
-            <h1 className='name'>Ariel</h1>
+            <h1 className='name'>Ariel Machado</h1>
           </div>
           <ul className="menu-left-side">
             <li onClick={() => scrollToSection(home)} className='item-list'>Home</li>
@@ -189,10 +191,10 @@ function App() {
               <h3 className={"fullstack-content"} ref={fullStackRef}>Full-stack web developer & mobile</h3>
             </div>
             <div className="stacks">
-              <a href="http://www.linkedin.com/in/arielmrodrigues">
+              <a className="stack-lin" href="http://www.linkedin.com/in/arielmrodrigues">
                 <img ref={linkedinRef} src={whiteLinkedin} alt="" />
               </a>
-              <a href="https://github.com/ArielMcR">
+              <a className="stack-lin" href="https://github.com/ArielMcR">
                 <img ref={githubRef} src={github} alt="" />
               </a>
             </div>
@@ -201,7 +203,7 @@ function App() {
             </div>
           </div>
           <div className="right-side">
-            <div ref={img_backgroundRef} className="img-background"></div>
+            {/* <div ref={img_backgroundRef} className="img-background"></div> */}
             <img src={IMAGES.img_capa} alt="" ref={img_primary} className='img-capa' />
           </div>
         </div>
@@ -209,7 +211,9 @@ function App() {
       <div className="second-section" ref={about}>
         <div className="container container-second-section ">
           <div className="left-side second-side">
-            <img src={IMAGES.img_sobre} alt="" className='form-image' />
+            <div className='image-wrapper'>
+              <img src={IMAGES.img_sobre} alt="" className='form-image' />
+            </div>
           </div>
           <div className="right-side second-side-right">
             <div className="about-me">
@@ -226,32 +230,8 @@ function App() {
               <p className='normal-text'>
                 Atualmente, estou em busca de oportunidades como Desenvolvedor Web Júnior ou Estagiário/Trainee para aplicar e expandir minhas habilidades. <span className='alternative-color'>Tenho grande interesse nas áreas de desenvolvimento Full-Stack web e Mobile.</span>
               </p>
-              <div className='alinha-centro'>
-                <div className="hard-skills">
-                  <div className="union second-union hard-skill-union">
-                    <hr />
-                    <h4>Hard-Skills</h4>
-                  </div>
-                  <div className="columns">
-                    <h3>React</h3>
-                    <h3>React-native</h3>
-                    <h3>HTML5</h3>
-                    <h3>CSS3</h3>
-                    <h3>JavaScript</h3>
-                    <h3>Python</h3>
-                  </div>
-                  <div className="columns">
-                    <h3>MySQL 5</h3>
-                    <h3>MySQL 8</h3>
-                    <h3>JAVA</h3>
-                    <h3>SCRUM</h3>
-                    <h3>Next JS</h3>
-                    <h3>Redis</h3>
-                  </div>
-                </div>
-              </div>
               <div className="section-about">
-                <a href="cv/curriculo.pdf" download>
+                <a href="/portfolio/cv/curriculo.pdf" download>
                   <button className='button-about download-cv'>
                     <p>Baixar CV</p>
                   </button>
@@ -260,6 +240,12 @@ function App() {
             </div>
           </div>
         </div>
+        <div className="hard-skills">
+          <h1>
+            Ferramentas que domino!
+          </h1>
+        </div>
+        <TechGrid />
       </div>
       <hr />
       <div className="third-section" ref={projects}>
@@ -268,7 +254,7 @@ function App() {
           <h3>Projetos</h3>
         </div>
         <div className="card-container">
-          <AutoCard
+          {/* <AutoCard
             description={`
               O ApicePDV é uma ferramenta móvel para o sistema ApiceERP O que pode ser feito no aplicativo? É possível efetuar vendas,Visualizar dados de clientes,Visualizar dados de produtos,Visualizar contas a receber e recebidas,Baixar contas a receber,Efetuar vendas,Visualizar estatística de vendas de clientes,Atualizar dados de clientes,Incluir novos clientes,entre outros.`}
             img={IMAGES.logo_pdv}
@@ -282,7 +268,7 @@ function App() {
             useAndroid={true}
             useMysql={true}
             img_modal={pdv_imgs}
-          />
+          /> */}
           <AutoCard
             description={`
 O projeto envolve o desenvolvimento de um sistema de gestão médica voltado para consultórios de psicologia, com o objetivo de facilitar o agendamento de consultas, o gerenciamento de prontuários eletrônicos e a comunicação entre profissionais e pacientes. O software proposto será uma plataforma que oferece uma interface intuitiva para organizar os calendários de consultas, armazenar dados clínicos de forma centralizada e acompanhar o histórico de tratamento dos pacientes. Ao automatizar e otimizar esses processos, o sistema busca melhorar a eficiência dos consultórios, proporcionando maior praticidade no dia a dia dos psicólogos.
