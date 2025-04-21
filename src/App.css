@@ -84,6 +84,43 @@ body {
   border-bottom: var(--yellow) 3px solid;
 }
 
+.select {
+  width: 100%;
+  max-width: 80vh;
+  height: 4vh;
+  border-radius: 8px;
+  background: #303030;
+  border: 2px solid #444;
+  color: #FFF;
+  padding: 0 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  appearance: none;
+  background-image: url('./assets/arrow-up-2.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.select:hover {
+  border-color: var(--yellow-smooth);
+  box-shadow: 0px 4px 8px var(--yellow-smooth);
+}
+
+.select:focus {
+  border-color: var(--yellow-smooth);
+  background-image: url('./assets/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  box-shadow: 0px 4px 10px var(--yellow-smooth);
+}
+
 
 
 .hover-mouse {
@@ -398,6 +435,10 @@ body {
 
 .download-cv {
   margin-left: 6vh;
+}
+
+.download-cv p {
+  font-size: 16px;
 }
 
 .second-side-right {

@@ -19,7 +19,9 @@ import { TextPlugin } from 'gsap/TextPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import IMAGES from './imgs/images';
 import TechGrid from './components/techCard/techCard';
+import { useTranslation, } from 'react-i18next'
 function App() {
+  const { t, i18n } = useTranslation()
   const home = useRef(null)
   const about = useRef()
   const contact = useRef()
@@ -102,7 +104,7 @@ function App() {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('Oi gostei muito da sua apresentação podemos marcar uma reunião ?')
+  const [message, setMessage] = useState(t('messagePlaceholder'));
   const [errors, setErrors] = useState({})
 
   const scrollToSection = (ref) => {
@@ -112,20 +114,17 @@ function App() {
   };
 
   const validation = () => {
-    const newErros = {};
-    if (!name.trim()) newErros.name = "Nome é obrigatório.";
-    if (!email.trim()) newErros.email = "E-mail é obrigatório.";
-    else if (!/\S+@\S+\.\S+/.test(email))
-      newErros.email = "E-mail inválido.";
-    if (!surname.trim())
-      newErros.surname = "Sobrenome é obrigatório.";
-    if (!message.trim())
-      newErros.message = "Mensagem é obrigatória.";
-    return newErros;
+    const newErrors = {};
+    if (!name.trim()) newErrors.name = t('nameRequired');
+    if (!email.trim()) newErrors.email = t('emailRequired');
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = t('emailInvalid');
+    if (!surname.trim()) newErrors.surname = t('surnameRequired');
+    if (!message.trim()) newErrors.message = t('messageRequired');
+    return newErrors;
   };
 
   const sendEmail = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const errors = validation();
     if (Object.keys(errors).length) {
       setErrors(errors);
@@ -135,21 +134,31 @@ function App() {
       from_name: `${name} ${surname}`,
       email: email,
       message: message,
-    }
-    emailJs.send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, templateParams, import.meta.env.VITE_PUBLIC_KEY).then((response) => {
-      toast.success('Email enviado com sucesso', { theme: 'black' })
-      setName('')
-      setSurname('')
-      setEmail('')
-      setMessage('')
-    }, (error) => {
-      console.log(error);
-
-      toast.error('Erro ao enviar email', { theme: 'black' })
-    })
-
-
+    };
+    emailJs
+      .send(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_PUBLIC_KEY
+      )
+      .then(
+        (response) => {
+          toast.success(t('emailSuccess'), { theme: 'black' });
+          setName('');
+          setSurname('');
+          setEmail('');
+          setMessage(t('messagePlaceholder'));
+        },
+        (error) => {
+          console.log(error);
+          toast.error(t('emailError'), { theme: 'black' });
+        }
+      )
   }
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
   const pdv_imgs = [
     IMAGES.pdv_image0,
     IMAGES.pdv_image1,
@@ -176,19 +185,33 @@ function App() {
             <h1 className='name' onClick={() => scrollToSection(home)}>Ariel Machado</h1>
           </div>
           <ul className="menu-left-side">
-            <li onClick={() => scrollToSection(home)} className='item-list'>Home</li>
-            <li onClick={() => scrollToSection(about)} className='item-list'>Sobre</li>
-            <li onClick={() => scrollToSection(projects)} className='item-list'>Projetos</li>
-            <li onClick={() => scrollToSection(contact)} className='item-list'>Contato</li>
+            <li onClick={() => scrollToSection(home)} className="item-list">
+              {t('home')}
+            </li>
+            <li onClick={() => scrollToSection(about)} className="item-list">
+              {t('about')}
+            </li>
+            <li onClick={() => scrollToSection(projects)} className="item-list">
+              {t('projects')}
+            </li>
+            <li onClick={() => scrollToSection(contact)} className="item-list">
+              {t('contact')}
+            </li>
+            <li>
+              <select className="select" onChange={(e) => changeLanguage(e.target.value)} value={i18n.language}>
+                <option value="pt">Português</option>
+                <option value="en">English</option>
+              </select>
+            </li>
           </ul>
         </div>
         <div className="container" ref={home}>
           <div className="left-side">
-            <p ref={subnameRef} className='subname'>Olá, meu nome é</p>
+            <p ref={subnameRef} className='subname'>{t('greeting')}</p>
             <h1 ref={nameRef}>Ariel M. Rodrigues</h1>
             <div className="union">
               <hr />
-              <h3 className={"fullstack-content"} ref={fullStackRef}>Full-stack web developer & mobile</h3>
+              <h3 className={"fullstack-content"} ref={fullStackRef}>{t('fullStack')}</h3>
             </div>
             <div className="stacks">
               <a className="stack-lin" href="http://www.linkedin.com/in/arielmrodrigues">
@@ -199,7 +222,7 @@ function App() {
               </a>
             </div>
             <div className="section-about">
-              <button className='button-about' onClick={() => scrollToSection(about)}><p>Sobre mim</p></button>
+              <button className='button-about' onClick={() => scrollToSection(about)}><p>{t('aboutMeButton')}</p></button>
             </div>
           </div>
           <div className="right-side">
@@ -219,21 +242,15 @@ function App() {
             <div className="about-me">
               <div className="union second-union">
                 <hr />
-                <h3>Sobre mim</h3>
+                <h3>{t('aboutMeTitle')}</h3>
               </div>
-              <p className='normal-text'>
-                Sou <span className='alternative-color'> estudante de Engenharia de Software no IFPR — Campus Paranavaí</span>, apaixonado por desenvolver soluções tecnológicas. Tenho experiência prática em desenvolvimento de software, utilizando as linguagens Java, Python e JavaScript, além de habilidades em bancos de dados MySQL e práticas de metodologias ágeis.<br />
-              </p>
-              <p className='normal-text'>
-                Destaco-me pela capacidade de aprender rapidamente, resolver problemas complexos e colaborar em equipes multidisciplinares. Durante meu estágio na <span className='alternative-color'>Ápice Sistemas</span>, desenvolvo sistemas internos e participo ativamente na entrega de funcionalidades que melhoraram os processos da empresa.
-              </p>
-              <p className='normal-text'>
-                Atualmente, estou em busca de oportunidades como Desenvolvedor Web Júnior ou Estagiário/Trainee para aplicar e expandir minhas habilidades. <span className='alternative-color'>Tenho grande interesse nas áreas de desenvolvimento Full-Stack web e Mobile.</span>
-              </p>
+              <p className="normal-text" dangerouslySetInnerHTML={{ __html: t('aboutMeText1') }} />
+              <p className="normal-text" dangerouslySetInnerHTML={{ __html: t('aboutMeText2') }} />
+              <p className="normal-text" dangerouslySetInnerHTML={{ __html: t('aboutMeText3') }} />
               <div className="section-about">
                 <a href="/portfolio/cv/curriculo.pdf" download>
                   <button className='button-about download-cv'>
-                    <p>Baixar CV</p>
+                    <p>{t('downloadCV')}</p>
                   </button>
                 </a>
               </div>
@@ -242,7 +259,7 @@ function App() {
         </div>
         <div className="hard-skills">
           <h1>
-            Ferramentas que domino!
+            {t('toolsTitle')}
           </h1>
         </div>
         <TechGrid />
@@ -251,7 +268,7 @@ function App() {
       <div className="third-section" ref={projects}>
         <div className="union third-union">
           <hr />
-          <h3>Projetos</h3>
+          <h3>{t('projectsTitle')}</h3>
         </div>
         <div className="card-container">
           {/* <AutoCard
@@ -270,13 +287,9 @@ function App() {
             img_modal={pdv_imgs}
           /> */}
           <AutoCard
-            description={`
-O projeto envolve o desenvolvimento de um sistema de gestão médica voltado para consultórios de psicologia, com o objetivo de facilitar o agendamento de consultas, o gerenciamento de prontuários eletrônicos e a comunicação entre profissionais e pacientes. O software proposto será uma plataforma que oferece uma interface intuitiva para organizar os calendários de consultas, armazenar dados clínicos de forma centralizada e acompanhar o histórico de tratamento dos pacientes. Ao automatizar e otimizar esses processos, o sistema busca melhorar a eficiência dos consultórios, proporcionando maior praticidade no dia a dia dos psicólogos.
-              `}
+            description={t('siapDescription')}
             img={IMAGES.logo_siap}
-            title={`            
-            SIAP(Sistema integrado de atendimento Psicologico)
-            `}
+            title={t('siapTitle')}
             useReact={true}
             useReactNative={true}
             useNode={true}
@@ -288,13 +301,9 @@ O projeto envolve o desenvolvimento de um sistema de gestão médica voltado par
             img_modal={siap_imgs}
           />
           <AutoCard
-            description={`
-O Portal de Loja de Carros é uma solução digital prática e intuitiva desenvolvida para facilitar a experiência de compra de veículos. A plataforma permite que os usuários explorem um catálogo completo de carros disponíveis, com informações detalhadas sobre cada modelo, como marca, ano, preço e características específicas. Por meio de filtros personalizáveis, os visitantes podem refinar a busca de acordo com suas preferências, como faixa de preço, tipo de combustível ou quilometragem, tornando a seleção mais rápida e eficiente. Ao encontrar o carro ideal, o usuário pode entrar em contato diretamente com a loja enviando uma mensagem através do portal, agilizando a comunicação e o processo de negociação. Simples, funcional e focado na satisfação do cliente, o sistema é a ponte perfeita entre os compradores e a loja de veículos.
-              `}
+            description={t('hendenyDescription')}
             img={IMAGES.hendeny_logo}
-            title={`            
-            Hendeny luxury car sales
-            `}
+            title={t('hendenyTitle')}
             useReact={true}
             useNode={true}
             useMysql={true}
@@ -308,57 +317,57 @@ O Portal de Loja de Carros é uma solução digital prática e intuitiva desenvo
       <div className="four-section" ref={contact}>
         <div className="union four-union">
           <hr />
-          <h3>Contato</h3>
+          <h3>{t('contactTitle')}</h3>
         </div>
         <img src={emailImage} alt="" className='img-email hidden' />
         <div className="container">
           <div className="left-side four-side-element-2">
             <form className="contact-form">
               <div className="mb-3">
-                <label htmlFor="nome" className="form-label">Nome</label>
+                <label htmlFor="nome" className="form-label">{t('nameLabel')}</label>
                 {errors.name && <span className="error">{errors.name}</span>}
                 <input
                   type="text"
                   className="form-control contact-input"
                   id="nome"
                   value={name}
-                  placeholder="Ex: Marcelo"
+                  placeholder={t('namePlaceholder')}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="sobrenome" className="form-label">Sobrenome</label>
+                <label htmlFor="sobrenome" className="form-label">{t('surnameLabel')}</label>
                 {errors.surname && <span className="error">{errors.surname}</span>}
                 <input
                   type="text"
                   className="form-control contact-input"
                   id="sobrenome"
                   value={surname}
-                  placeholder="Ex: Da Silva"
+                  placeholder={t('surnamePlaceholder')}
                   onChange={(e) => setSurname(e.target.value)}
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email</label>
+                <label htmlFor="email" className="form-label">{t('emailLabel')}</label>
                 {errors.email && <span className="error">{errors.email}</span>}
                 <input
                   type="email"
                   className="form-control contact-input"
                   id="email"
                   value={email}
-                  placeholder="Ex: email@gmail.com"
+                  placeholder={t('emailPlaceholder')}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="mensagem" className="form-label">Mensagem</label>
+                <label htmlFor="mensagem" className="form-label">{t('messageLabel')}</label>
                 {errors.message && <span className="error">{errors.message}</span>}
                 <textarea
                   className="form-control contact-textarea"
                   id="mensagem"
                   rows="4"
                   value={message}
-                  placeholder="Oi gostei muito da sua apresentação podemos marcar uma reunião ?"
+                  placeholder={t('messagePlaceholder')}
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
               </div>
@@ -391,10 +400,10 @@ O Portal de Loja de Carros é uma solução digital prática e intuitiva desenvo
         </div>
         <div className="midia">
           <ul className="menu-left-side p-1_5">
-            <li onClick={() => scrollToSection(home)} className='item-list'>Home</li>
-            <li onClick={() => scrollToSection(about)} className='item-list'>Sobre</li>
-            <li onClick={() => scrollToSection(projects)} className='item-list'>Projetos</li>
-            <li onClick={() => scrollToSection(contact)} className='item-list'>Contato</li>
+            <li onClick={() => scrollToSection(home)} className='item-list'>{t('home')}</li>
+            <li onClick={() => scrollToSection(about)} className='item-list'>{t('about')}</li>
+            <li onClick={() => scrollToSection(projects)} className='item-list'>{t('projects')}</li>
+            <li onClick={() => scrollToSection(contact)} className='item-list'>{t('contact')}</li>
           </ul>
         </div>
       </div>
