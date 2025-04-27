@@ -211,6 +211,7 @@ function App() {
             <h1 ref={nameRef}>Ariel M. Rodrigues</h1>
             <div className="union">
               <hr />
+
               <h3 className={"fullstack-content"} ref={fullStackRef}>{t('fullStack')}</h3>
             </div>
             <div className="stacks">
