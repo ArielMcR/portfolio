@@ -198,12 +198,30 @@ function App() {
               {t('contact')}
             </li>
             <li>
-              <select className="select" onChange={(e) => changeLanguage(e.target.value)} value={i18n.language}>
+              <select
+                className="select"
+                onChange={(e) => {
+                  changeLanguage(e.target.value);
+                  e.target.blur();
+                }}
+                value={i18n.language}
+              >
                 <option value="pt">Português</option>
                 <option value="en">English</option>
               </select>
             </li>
           </ul>
+          <select
+            className="select hidden-select"
+            onChange={(e) => {
+              changeLanguage(e.target.value);
+              e.target.blur();
+            }}
+            value={i18n.language}
+          >
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+          </select>
         </div>
         <div className="container" ref={home}>
           <div className="left-side">
