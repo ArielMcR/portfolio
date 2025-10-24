@@ -11,11 +11,10 @@ import heart from './assets/heart-solid.svg'
 import AutoCard from './components/auto-card/auto-card';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 import emailJs from '@emailjs/browser'
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import { gsap } from "gsap";
-import { TextPlugin } from 'gsap/TextPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import IMAGES from './imgs/images';
 import TechGrid from './components/techCard/techCard';
@@ -99,6 +98,18 @@ function App() {
         scrub: true,
       }
     })
+
+    // Scroll event listener para o botão "voltar ao topo"
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [])
 
   const [name, setName] = useState('')
@@ -106,11 +117,17 @@ function App() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState(t('messagePlaceholder'));
   const [errors, setErrors] = useState({})
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const scrollToSection = (ref) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const validation = () => {
@@ -130,6 +147,8 @@ function App() {
       setErrors(errors);
       return;
     }
+
+    setIsSubmitting(true);
     const templateParams = {
       from_name: `${name} ${surname}`,
       email: email,
@@ -144,41 +163,59 @@ function App() {
       )
       .then(
         (response) => {
-          toast.success(t('emailSuccess'), { theme: 'black' });
+          toast.success(t('emailSuccess'), {
+            theme: 'dark',
+            position: 'top-right',
+            autoClose: 5000,
+          });
           setName('');
           setSurname('');
           setEmail('');
           setMessage(t('messagePlaceholder'));
+          setErrors({});
         },
         (error) => {
           console.log(error);
-          toast.error(t('emailError'), { theme: 'black' });
+          toast.error(t('emailError'), {
+            theme: 'dark',
+            position: 'top-right',
+            autoClose: 5000,
+          });
         }
       )
+      .finally(() => {
+        setIsSubmitting(false);
+      })
   }
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
-  const pdv_imgs = [
-    IMAGES.pdv_image0,
-    IMAGES.pdv_image1,
-    IMAGES.pdv_image2,
-    IMAGES.pdv_image3,
-    IMAGES.pdv_image4,
-  ]
   const siap_imgs = [
     IMAGES.siap_image1,
     IMAGES.siap_image2,
     IMAGES.siap_image3,
     IMAGES.siap_image4
   ]
-  const hendeny_imgs = [
-    IMAGES.hendeny_image1,
-    IMAGES.hendeny_image2,
-    IMAGES.hendeny_image3,
+  const onixx_imgs = [
+    IMAGES.onixx_image1,
+    IMAGES.onixx_image2,
+    IMAGES.onixx_image3,
   ]
+  const apollo_veiculos =
+    [
+      IMAGES.apollo_image1,
+      IMAGES.apollo_image2,
+      IMAGES.apollo_image3,
+      IMAGES.apollo_image4,
+      IMAGES.apollo_image5,
+      IMAGES.apollo_image6,
+    ]
+
   return (
     <>
+      <a href="#main-content" className="skip-to-content">
+        {t('skipToContent') || 'Pular para o conteúdo'}
+      </a>
       <div className='first-section' ref={first_section_ref}>
         <div className="header">
           <div className="hover-mouse">
@@ -223,7 +260,7 @@ function App() {
             <option value="en">English</option>
           </select>
         </div>
-        <div className="container" ref={home}>
+        <div className="container" ref={home} id="main-content">
           <div className="left-side">
             <p ref={subnameRef} className='subname'>{t('greeting')}</p>
             <h1 ref={nameRef}>Ariel M. Rodrigues</h1>
@@ -246,7 +283,7 @@ function App() {
           </div>
           <div className="right-side">
             {/* <div ref={img_backgroundRef} className="img-background"></div> */}
-            <img src={IMAGES.img_capa} alt="" ref={img_primary} className='img-capa' />
+            <img src={IMAGES.img_capa} alt="Ariel Machado" ref={img_primary} className='img-capa' loading="lazy" />
           </div>
         </div>
       </div>
@@ -254,7 +291,7 @@ function App() {
         <div className="container container-second-section ">
           <div className="left-side second-side">
             <div className='image-wrapper'>
-              <img src={IMAGES.img_sobre} alt="" className='form-image' />
+              <img src={IMAGES.img_sobre} alt="Sobre Ariel Machado" className='form-image' loading="lazy" />
             </div>
           </div>
           <div className="right-side second-side-right">
@@ -267,7 +304,7 @@ function App() {
               <p className="normal-text" dangerouslySetInnerHTML={{ __html: t('aboutMeText2') }} />
               <p className="normal-text" dangerouslySetInnerHTML={{ __html: t('aboutMeText3') }} />
               <div className="section-about">
-                <a href="/portfolio/cv/curriculo.pdf" download>
+                <a href="/portfolio/cv/Ariel_Machado_Rodrigues.pdf" download>
                   <button className='button-about download-cv'>
                     <p>{t('downloadCV')}</p>
                   </button>
@@ -290,21 +327,6 @@ function App() {
           <h3>{t('projectsTitle')}</h3>
         </div>
         <div className="card-container">
-          {/* <AutoCard
-            description={`
-              O ApicePDV é uma ferramenta móvel para o sistema ApiceERP O que pode ser feito no aplicativo? É possível efetuar vendas,Visualizar dados de clientes,Visualizar dados de produtos,Visualizar contas a receber e recebidas,Baixar contas a receber,Efetuar vendas,Visualizar estatística de vendas de clientes,Atualizar dados de clientes,Incluir novos clientes,entre outros.`}
-            img={IMAGES.logo_pdv}
-            title={`            
-            ApicePDV 4.0
-            `}
-            useReact={true}
-            useReactNative={true}
-            useNode={true}
-            useIos={true}
-            useAndroid={true}
-            useMysql={true}
-            img_modal={pdv_imgs}
-          /> */}
           <AutoCard
             description={t('siapDescription')}
             img={IMAGES.logo_siap}
@@ -320,16 +342,28 @@ function App() {
             img_modal={siap_imgs}
           />
           <AutoCard
-            description={t('hendenyDescription')}
-            img={IMAGES.hendeny_logo}
-            title={t('hendenyTitle')}
+            description={t('onixxDescription')}
+            img={IMAGES.logo_onixx}
+            title={t('onixxTitle')}
             useReact={true}
             useNode={true}
             useMysql={true}
             useWeb={true}
-            img_modal={hendeny_imgs}
-            link_web='https://hendeny.vercel.app'
+            img_modal={onixx_imgs}
+            link_web='https://cs-pi-2025-tekobit.github.io/landing-page-tekobit'
           />
+          <AutoCard
+            description={t('apolloDescription')}
+            img={IMAGES.logo_apollo}
+            title={t('apolloTitle')}
+            useReact={true}
+            useNode={true}
+            useMysql={true}
+            useWeb={true}
+            img_modal={apollo_veiculos}
+            link_web='https://sandbox.apollo.tekobit.com.br/home'
+          />
+
         </div>
       </div>
       <hr />
@@ -338,7 +372,7 @@ function App() {
           <hr />
           <h3>{t('contactTitle')}</h3>
         </div>
-        <img src={emailImage} alt="" className='img-email hidden' />
+        <img src={emailImage} alt="Email" className='img-email hidden' loading="lazy" />
         <div className="container">
           <div className="left-side four-side-element-2">
             <form className="contact-form">
@@ -390,12 +424,19 @@ function App() {
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
               </div>
-              <button type="submit" className="btn-submit" onClick={(e) => sendEmail(e)}>Enviar</button>
+              <button
+                type="submit"
+                className={`btn-submit ${isSubmitting ? 'loading' : ''}`}
+                onClick={(e) => sendEmail(e)}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? '' : 'Enviar'}
+              </button>
             </form>
 
           </div>
           <div className="right-side four-side-element">
-            <img src={emailImage} alt="" className='img-email' />
+            <img src={emailImage} alt="Email ilustração" className='img-email' loading="lazy" />
           </div>
         </div>
       </div>
@@ -426,12 +467,31 @@ function App() {
           </ul>
         </div>
       </div>
-      <div className="footer">
+      <footer className="footer">
         <p>Copyright ©2025, Powered by Ariel Machado Rodrigues </p>
         &nbsp;
-        <img src={heart} alt="" />
-      </div>
-      <ToastContainer />
+        <img src={heart} alt="Coração" />
+      </footer>
+
+      {/* Botão Voltar ao Topo */}
+      {showScrollTop && (
+        <button className="scroll-to-top" onClick={scrollToTop} aria-label="Voltar ao topo">
+          ↑
+        </button>
+      )}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   )
 }

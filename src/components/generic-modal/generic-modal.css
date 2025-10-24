@@ -72,10 +72,11 @@
     margin-left: 1vh;
 }
 
-.arrow {
+.default img.arrow,
+.union img.arrow {
     width: 1vh !important;
     height: 1vh !important;
-
+    margin-left: 1vh !important;
 }
 
 .arrow:hover {

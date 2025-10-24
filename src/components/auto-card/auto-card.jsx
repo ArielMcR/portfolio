@@ -4,6 +4,7 @@ import check from "../../assets/check-solid.svg";
 import { useState } from "react";
 import GenericModal from "../generic-modal/generic-modal";
 import { CursorClick } from "@phosphor-icons/react";
+import { useTranslation } from "react-i18next";
 
 export default function AutoCard({
     title,
@@ -22,6 +23,7 @@ export default function AutoCard({
     img_modal = [],
     link_web = '/',
 }) {
+    const { t, i18n } = useTranslation();
     const [openModal, setOpenModal] = useState(false);
     const truncateDescription = (text, maxLength) => {
         if (text.length > maxLength) {
@@ -54,7 +56,7 @@ export default function AutoCard({
                     <p>{truncateDescription(description, 300)}</p>
                     <section className="see-more">
                         <p>
-                            <span>Pressione para ver mais...</span><CursorClick size={22} />
+                            <span>{t('seeMore')}</span><CursorClick size={22} />
                         </p>
                     </section>
                 </div>

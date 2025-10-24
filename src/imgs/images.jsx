@@ -16,6 +16,18 @@ const IMAGES = {
     hendeny_image1: new URL('./hendeny/0.png', import.meta.url).href,
     hendeny_image2: new URL('./hendeny/1.png', import.meta.url).href,
     hendeny_image3: new URL('./hendeny/2.png', import.meta.url).href,
+    logo_onixx: new URL('./onixx/logo.png', import.meta.url).href,
+    onixx_image1: new URL('./onixx/0.png', import.meta.url).href,
+    onixx_image2: new URL('./onixx/1.png', import.meta.url).href,
+    onixx_image3: new URL('./onixx/2.png', import.meta.url).href,
+    logo_apollo: new URL('./apollo/logo.png', import.meta.url).href,
+    apollo_image1: new URL('./apollo/0.png', import.meta.url).href,
+    apollo_image2: new URL('./apollo/1.png', import.meta.url).href,
+    apollo_image3: new URL('./apollo/2.png', import.meta.url).href,
+    apollo_image4: new URL('./apollo/3.png', import.meta.url).href,
+    apollo_image5: new URL('./apollo/4.png', import.meta.url).href,
+    apollo_image6: new URL('./apollo/5.png', import.meta.url).href,
+
 }
 
 export default IMAGES

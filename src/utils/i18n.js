@@ -29,8 +29,15 @@ const resources = {
             projectsTitle: 'Projetos',
             siapTitle: 'SIAP (Sistema Integrado de Atendimento Psicológico)',
             siapDescription: 'O projeto envolve o desenvolvimento de um sistema de gestão médica voltado para consultórios de psicologia, com o objetivo de facilitar o agendamento de consultas, o gerenciamento de prontuários eletrônicos e a comunicação entre profissionais e pacientes. O software proposto será uma plataforma que oferece uma interface intuitiva para organizar os calendários de consultas, armazenar dados clínicos de forma centralizada e acompanhar o histórico de tratamento dos pacientes. Ao automatizar e otimizar esses processos, o sistema busca melhorar a eficiência dos consultórios, proporcionando maior praticidade no dia a dia dos psicólogos.',
-            hendenyTitle: 'Hendeny Luxury Car Sales',
-            hendenyDescription: 'O Portal de Loja de Carros é uma solução digital prática e intuitiva desenvolvida para facilitar a experiência de compra de veículos. A plataforma permite que os usuários explorem um catálogo completo de carros disponíveis, com informações detalhadas sobre cada modelo, como marca, ano, preço e características específicas. Por meio de filtros personalizáveis, os visitantes podem refinar a busca de acordo com suas preferências, como faixa de preço, tipo de combustível ou quilometragem, tornando a seleção mais rápida e eficiente. Ao encontrar o carro ideal, o usuário pode entrar em contato diretamente com a loja enviando uma mensagem através do portal, agilizando a comunicação e o processo de negociação. Simples, funcional e focado na satisfação do cliente, o sistema é a ponte perfeita entre os compradores e a loja de veículos.',
+
+            onixxTitle: 'Onixx Sistema de Loja de Carros',
+            onixxDescription: 'Fui Scrum Master do projeto "Landing Page Onixx", uma página institucional responsiva criada para apresentar os serviços da Onixx e captar leads. Atuei facilitando as cerimônias ágeis (planning, daily, review e retrospective), removendo impedimentos, alinhando prioridades com o Product Owner e mantendo o time focado nas entregas de cada sprint. Também monitorei progresso e métricas de time, promovi melhorias contínuas no processo e apoiei a comunicação entre desenvolvedores, designers e stakeholders para garantir entregas de qualidade no prazo.',
+
+            apolloTitle: 'Sistema de Vitrine – Apollo Veículos',
+            apolloDescription: 'Atuei como desenvolvedor e Scrum Master no projeto do Sistema de Vitrine da Apollo Veículos, criado para atender à necessidade de uma empresa da região em aumentar a visibilidade e o engajamento com seus veículos. O sistema conta com uma área administrativa que permite o gerenciamento completo de cadastros — incluindo carros, cores, motores e demais informações —, que são exibidas de forma dinâmica na vitrine online da loja. Fui responsável pela organização do time de desenvolvimento, planejamento das sprints e implementação das principais funcionalidades, garantindo uma entrega ágil, funcional e alinhada às expectativas do cliente.'
+            ,
+
+            seeMore: 'Pressione para ver mais',
 
             // Quarta seção (Contato)
             contactTitle: 'Contato',
@@ -82,8 +89,18 @@ const resources = {
             projectsTitle: 'Projects',
             siapTitle: 'SIAP (Integrated Psychological Care System)',
             siapDescription: 'The project involves the development of a medical management system for psychology clinics, aimed at facilitating appointment scheduling, electronic medical record management, and communication between professionals and patients. The proposed software will be a platform that offers an intuitive interface to organize appointment calendars, centrally store clinical data, and track patients’ treatment history. By automating and optimizing these processes, the system seeks to improve the efficiency of clinics, providing greater convenience in the daily routine of psychologists.',
-            hendenyTitle: 'Hendeny Luxury Car Sales',
-            hendenyDescription: 'The Car Dealership Portal is a practical and intuitive digital solution developed to enhance the vehicle purchasing experience. The platform allows users to explore a complete catalog of available cars, with detailed information about each model, such as brand, year, price, and specific features. Through customizable filters, visitors can refine their search based on preferences like price range, fuel type, or mileage, making the selection process faster and more efficient. Upon finding the ideal car, users can directly contact the dealership by sending a message through the portal, streamlining communication and the negotiation process. Simple, functional, and focused on customer satisfaction, the system is the perfect bridge between buyers and the vehicle dealership.',
+
+            onixxTitle: 'Onixx Car Dealership System',
+            onixxDescription: 'I served as Scrum Master for the "Landing Page TekoBit" project — a responsive corporate landing page built to showcase services and capture leads. I facilitated agile ceremonies (Sprint Planning, Daily Stand-ups, Sprint Review, and Retrospective), removed impediments, aligned priorities with the Product Owner, and kept the team focused on sprint goals. I also monitored progress and team metrics, promoted continuous process improvements, and supported communication between developers, designers, and stakeholders to ensure timely, high-quality deliveries.',
+
+
+            apolloTitle: 'Showcase System – Apollo Vehicles',
+            apolloDescription: 'I worked as a developer and Scrum Master on the Apollo Vehicles Showcase System, a project designed to help a local company increase the visibility and engagement of its vehicle listings. The system includes an administrative dashboard that allows complete management of car data — including models, colors, engines, and other details — which are dynamically displayed in the store’s online showcase. I was responsible for coordinating the development team, planning sprints, and implementing key system features, ensuring a fast, reliable, and goal- aligned delivery that met the client’s expectations.'
+            ,
+
+
+            seeMore: 'Press to see more',
+
             // Quarta seção (Contato)
             contactTitle: 'Contact',
             nameLabel: 'Name',
