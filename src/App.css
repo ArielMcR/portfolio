@@ -7,18 +7,24 @@
 }
 
 :root {
-  --primary: #1E1E1E;
-  --first-section: #151515;
-  --header: #181919;
-  --yellow: #7B522D;
-
-  --yellow-smooth: #E19652;
-  --second-section: #181919;
-  --third-section: #2C2E2D;
-  --four-section: #3E3E3E;
-  --final-color: #111111;
+  --primary: #0a0a0a;
+  --first-section: #0f0f0f;
+  --header: #111111;
+  --yellow: #f59e0b;
+  --yellow-smooth: #fbbf24;
+  --second-section: #131313;
+  --third-section: #171717;
+  --four-section: #1a1a1a;
+  --final-color: #0d0d0d;
   --footer-color: #000000;
-  --versao-azul: #002cff
+  --versao-azul: #3b82f6;
+  --accent-glow: rgba(245, 158, 11, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 body,
@@ -26,7 +32,8 @@ html {
   margin: 0;
   padding: 0;
   font-family: "Alexandria", sans-serif;
-  font-weight: 400
+  font-weight: 400;
+  overflow-x: hidden;
 }
 
 p {
@@ -51,17 +58,53 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  /* Garante que ocupe pelo menos a altura da janela de visualização */
-  background-color: var(--first-section);
+  background: linear-gradient(135deg, var(--first-section) 0%, #0d0d0d 100%);
+  position: relative;
+}
+
+.first-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, var(--accent-glow) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .header {
-  background-color: var(--header);
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1vh;
-  height: 5vh;
+  padding: 1.5vh 3vh;
+  height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .menu-left-side {
@@ -75,50 +118,86 @@ body {
 
 .item-list {
   font-weight: 300;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.85);
   margin-right: 15vh;
   cursor: pointer;
+  position: relative;
+  padding: 0.5em 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item-list::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--yellow), var(--yellow-smooth));
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .item-list:hover {
-  border-bottom: var(--yellow) 3px solid;
+  color: var(--yellow-smooth);
+  transform: translateY(-2px);
+}
+
+.item-list:hover::after {
+  width: 100%;
 }
 
 .select {
-  width: 13vh;
-  max-width: 90vh;
-  height: 4vh;
-  border-radius: 8px;
-  background: #303030;
-  border: 2px solid #444;
+  width: 130px;
+  height: 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1.5px solid rgba(245, 158, 11, 0.3);
   color: #FFF;
-  padding: 0 12px;
+  padding: 0 38px 0 16px;
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   outline: none;
   appearance: none;
   background-image: url('./assets/arrow.svg');
   background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px 16px;
+  background-position: right 14px center;
+  background-size: 14px 14px;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .select:hover {
-  border-color: var(--yellow-smooth);
-  box-shadow: 0px 4px 8px var(--yellow-smooth);
+  border-color: var(--yellow);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.1));
+  box-shadow: 0 6px 20px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .select:focus {
   border-color: var(--yellow-smooth);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.15));
   background-image: url('./assets/arrow-up-2.svg');
   background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px 16px;
-  box-shadow: 0px 4px 10px var(--yellow-smooth);
+  background-position: right 14px center;
+  background-size: 14px 14px;
+  box-shadow: 0 8px 24px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.select option {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.select option:hover {
+  background: var(--yellow);
+  color: #000;
 }
 
 .hidden-select {
@@ -239,23 +318,44 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
-  width: 50px;
-  height: 48px;
-  margin-right: 1vh;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  width: 56px;
+  height: 56px;
+  margin-right: 1.5vh;
   border-style: solid;
-  border-radius: 1vh;
+  border-radius: 50%;
   border-width: 1px;
-  border-color: #ffff;
-  box-shadow: 0 0 3px #ffff;
-  transition: all 0.2s ease-in;
+  border-color: var(--glass-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.stack-lin::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
 }
 
 .stack-lin:hover {
   border-color: var(--yellow);
-  box-shadow: 0 0 10px var(--yellow);
-  transition: all 0.2s ease-out;
+  box-shadow: 0 8px 24px var(--accent-glow);
+  transform: translateY(-5px) scale(1.1);
+}
+
+.stack-lin:hover::before {
+  width: 100%;
+  height: 100%;
 }
 
 .stacks img {
@@ -276,48 +376,48 @@ body {
   width: 217px;
   height: 55px;
   padding: 1em 2em;
-  border-radius: 15px;
+  border-radius: 50px;
   font-size: 1em;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--yellow-smooth) 100%);
-  color: #fff;
-  border: 1px solid var(--yellow);
-  box-shadow: 0 0 10px var(--yellow);
+  background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-smooth) 100%);
+  color: #000;
+  border: none;
+  box-shadow: 0 4px 20px var(--accent-glow);
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.2s ease-in;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-about:hover {
-  background: linear-gradient(90deg, var(--yellow-smooth) 0%, var(--yellow) 100%);
-  box-shadow: 0 0 10px 5px var(--yellow);
-  transition: all 0.2s ease-out;
+  background: linear-gradient(135deg, var(--yellow-smooth) 0%, var(--yellow) 100%);
+  box-shadow: 0 8px 30px var(--accent-glow);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .button-about:hover::before {
-  animation: sh02 0.5s 0s linear;
+  animation: sh02 0.6s 0s ease-out;
 }
 
 .button-about::before {
   content: '';
   display: block;
   width: 0px;
-  height: 86%;
+  height: 100%;
   position: absolute;
-  top: 7%;
-  left: 0%;
+  top: 0;
+  left: 0;
   opacity: 0;
-  background: #fff;
-  box-shadow: 0 0 50px 30px #fff;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transform: skewX(-20deg);
 }
 
 @keyframes sh02 {
   from {
     opacity: 0;
-    left: 0%;
+    left: -100%;
+    width: 30%;
   }
 
   50% {
@@ -327,19 +427,23 @@ body {
   to {
     opacity: 0;
     left: 100%;
+    width: 30%;
   }
 }
 
 .button-about:active {
-  box-shadow: 0 0 0 0 transparent;
-  transition: box-shadow 0.2s ease-in;
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 15px var(--accent-glow);
+  transition: all 0.1s ease;
 }
 
 .button-about p {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
   line-height: normal;
+  position: relative;
+  z-index: 1;
 }
 
 .right-side {

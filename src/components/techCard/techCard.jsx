@@ -10,6 +10,7 @@ import db from '../../assets/tech-icons/bd.svg'
 import docker from '../../assets/tech-icons/docker.svg'
 import bootstrap from '../../assets/tech-icons/bs.svg'
 import git from '../../assets/tech-icons/git.svg'
+import nestJS from '../../assets/tech-icons/nestjs.svg'
 
 const techs = [
     {
@@ -35,6 +36,12 @@ const techs = [
         title: 'React e React Native',
         description: 'Framework para construção de interfaces modernas.',
         alt: "React e React Native",
+    },
+    {
+        icon: nestJS,
+        title: 'Nest Js',
+        description: 'Framework para construção de interfaces modernas.',
+        alt: "Nest Js",
     },
     {
         icon: node,

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
+import './App.animations.css'
 import facebookLogo from './assets/white-facebook.svg';
 import github from './assets/github-brands-solid.svg';
 import whiteLinkedin from './assets/white-linkedin.svg';
