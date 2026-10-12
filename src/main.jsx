@@ -1,11 +1,18 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-// import './index.css'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
-import '../src/utils/i18n.js'
+import './utils/i18n.js'
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root')
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
+
+// No build de produção o HTML já vem pré-renderizado (scripts/prerender.mjs); no dev, não.
+if (container.firstElementChild) {
+  hydrateRoot(container, app)
+} else {
+  createRoot(container).render(app)
+}

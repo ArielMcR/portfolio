@@ -1,12 +1,12 @@
 {
-  "homepage": "https://ArielMcR.github.io/portifolio",
+  "homepage": "https://ArielMcR.github.io/portfolio",
   "name": "portifolio",
   "private": true,
   "version": "1.1.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

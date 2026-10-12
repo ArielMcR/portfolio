@@ -1,15 +1,83 @@
 <!doctype html>
-<html lang="pt-Br">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/image.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio Ariel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- SEO: o endereço publicado no GitHub Pages; se mudar (ex.: domínio próprio), troque em todos os lugares desta seção e em public/sitemap.xml -->
+  <title>Ariel Machado Rodrigues | Desenvolvedor Full-stack Pleno</title>
+  <meta name="description" content="Desenvolvedor full-stack pleno em Paranavaí/PR. Crio aplicações web e mobile com React, React Native, NestJS e MySQL. Veja meus projetos, tecnologias e contato." />
+  <meta name="author" content="Ariel Machado Rodrigues" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://arielmcr.github.io/portfolio/" />
+  <!-- Google Search Console: cole aqui a meta tag de verificação que o Search Console gerar -->
+
+  <!-- Prévia ao compartilhar o link (LinkedIn, WhatsApp, Facebook, X) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ariel Machado Rodrigues" />
+  <meta property="og:url" content="https://arielmcr.github.io/portfolio/" />
+  <meta property="og:title" content="Ariel Machado Rodrigues | Desenvolvedor Full-stack Pleno" />
+  <meta property="og:description" content="Aplicações web e mobile com React, React Native, NestJS e MySQL. Veja projetos como AiQPet e Rodrigues Barber Shop." />
+  <meta property="og:image" content="https://arielmcr.github.io/portfolio/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ariel Machado Rodrigues — Desenvolvedor Full-stack Pleno" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ariel Machado Rodrigues | Desenvolvedor Full-stack Pleno" />
+  <meta name="twitter:description" content="Aplicações web e mobile com React, React Native, NestJS e MySQL." />
+  <meta name="twitter:image" content="https://arielmcr.github.io/portfolio/og-image.jpg" />
+
+  <!-- Dados estruturados: ajudam o Google a entender quem é a pessoa do site -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://arielmcr.github.io/portfolio/#person",
+          "name": "Ariel Machado Rodrigues",
+          "alternateName": "Ariel Machado",
+          "url": "https://arielmcr.github.io/portfolio/",
+          "image": "https://arielmcr.github.io/portfolio/og-image.jpg",
+          "jobTitle": "Desenvolvedor Full-stack Pleno",
+          "worksFor": { "@type": "Organization", "name": "Ápice Sistemas" },
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "Instituto Federal do Paraná (IFPR) — Campus Paranavaí" },
+          "address": { "@type": "PostalAddress", "addressLocality": "Paranavaí", "addressRegion": "PR", "addressCountry": "BR" },
+          "knowsAbout": ["React", "React Native", "NestJS", "Node.js", "JavaScript", "Java", "Python", "MySQL", "Docker"],
+          "sameAs": [
+            "https://www.linkedin.com/in/arielmrodrigues",
+            "https://github.com/ArielMcR",
+            "https://www.instagram.com/arielmro/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://arielmcr.github.io/portfolio/#website",
+          "url": "https://arielmcr.github.io/portfolio/",
+          "name": "Ariel Machado Rodrigues",
+          "inLanguage": ["pt-BR", "en"],
+          "publisher": { "@id": "https://arielmcr.github.io/portfolio/#person" }
+        }
+      ]
+    }
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0c0a09" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root"><!--app-html--></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
